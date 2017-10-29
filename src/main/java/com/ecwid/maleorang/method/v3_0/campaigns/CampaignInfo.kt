@@ -107,7 +107,23 @@ class CampaignInfo : MailchimpObject() {
 
             @JvmField
             @Field
-            var conditions: Array<String>? = null
+            var conditions: Array<ConditionInfo>? = null
+        }
+    }
+
+    class ConditionInfo( @JvmField @Field var field: String?,
+                         @JvmField @Field var op: String?,
+                         @JvmField @Field var value: String?) : MailchimpObject(){
+
+        @JvmField
+        @Field
+        var condition_type: String? = null;
+
+        constructor(condition_type:String?, field:String, op: String, value: String) : this(field, op, value){
+            this.condition_type = condition_type
+        }
+        constructor() : this(null, null, null){
+            this.condition_type = null
         }
     }
 
